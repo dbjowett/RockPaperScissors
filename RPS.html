@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Game ON!
+    <script>
+    let options = [ "rock", "paper", "scissors" ];
+    let playerScore = 0;
+    let computerScore = 0;
+    let tieCounter = 0;
+
+// FUNCTION: play 1 round of the game
+    function playRound(playerSelection, computerSelection){
+
+            if(playerSelection === "rock" && computerSelection === "paper" || playerSelection == "scissors" && computerSelection == "rock" || playerSelection == "paper" && computerSelection == "scissors"){
+                alert(`You Lose! ${computerSelection} Beats ${playerSelection}!`);
+                computerScore++;
+            } else if(playerSelection == "paper" && computerSelection == "rock" || playerSelection == "scissors" && computerSelection == "paper" || playerSelection == "rock" && computerSelection == "scissors"){
+                alert(`You Win! ${playerSelection} Beats ${computerSelection}!`);
+                playerScore++;
+            } else {
+                console.log('We did the same thing!! :(');
+                tieCounter ++;
+            }
+        }
+
+//FUNCTION: 
+    // 1. play the game for 5 rounds (for loop)
+    // 2. prompt the player 
+    // 3. call the computerSelection function
+    // 4. call the playRound function
+    
+    function game(){
+        for (let i = 0; i < 5 ; i++ ){
+            
+            let playerPrompt = prompt("Rock, Paper, Or Scissors?");
+            let playerSelection = playerPrompt.toLowerCase();   
+            let computerSelection = computerPlay();
+            
+            playRound(playerSelection, computerSelection);
+                console.log(`The score is ${playerScore} for the User and ${computerScore} for the Computer! and we tied ${tieCounter} times`);
+    }
+}
+
+
+// FUNCTION: makes a random selection for the computer
+    function computerPlay(){
+        let computerSelection = options[Math.round((Math.floor((Math.random() * 3 ))))];
+        return computerSelection;
+    }
+
+game();
+    </script>
+</body>
+</html>
+
+
+
